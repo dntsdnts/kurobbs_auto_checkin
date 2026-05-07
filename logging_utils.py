@@ -32,8 +32,8 @@ def configure_logger(debug: bool, secrets: Iterable[str]):
 
     def _sink(message):
         record = message.record
-        timestamp = record["time"].strftime("%Y-%m-%d %H:%M:%S%z")
-        base = f"[{timestamp}] {record['level'].name:<8} {record['message']}"
+        ##timestamp = record["time"].strftime("%Y-%m-%d %H:%M:%S%z")
+        base = f"[{record['level'].name:<8}] {record['message']}"
         safe_message = redact(base, secret_values)
         sys.stdout.write(safe_message + "\n")
 
